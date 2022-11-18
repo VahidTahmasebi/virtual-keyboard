@@ -1,3 +1,5 @@
+const entryInput = document.querySelector(".entry__input-keys");
+
 const Keyboard = {
   elements: {
     main: null,
@@ -30,9 +32,22 @@ const Keyboard = {
 
     this.elements.main.appendChild(this.elements.keysContainer);
     document.body.appendChild(this.elements.main);
+
+    // Get user input
+    entryInput.forEach((element) => {
+      element.addEventListener("focus", () => {
+        this.open(element.value, (currentValue) => {
+          element.value = currentValue;
+        });
+      });
+    });
   },
 
   _createKeys() {
+    const fragment = document.createDocumentFragment();
     const keyLayout = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "caps", "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter", "done", "z", "x", "c", "v", "b", "n", "m", ",", ".", "?", "*", "space"];
+
   },
+
+  //   open()
 };
