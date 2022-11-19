@@ -50,7 +50,7 @@ const Keyboard = {
     const createIconHTML = (icon_name) => {
       return `<i class="material-icons">${icon_name}</i>`;
     };
-    
+
     keyLayout.forEach((key) => {
       const keyElement = document.createElement("button");
       const insertLineBreak = ["backspace", "p", "enter", "?"].indexOf(key) !== -1;
@@ -130,6 +130,7 @@ const Keyboard = {
         fragment.appendChild(document.createElement("br"));
       }
     });
+    return fragment;
   },
 
   _triggerEvent(handlerName) {
