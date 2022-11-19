@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #001c0d;
+}
+.entry {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.entry--row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  transition: 0.2s;
+}
+.entry__input-keys {
+  width: 75%;
+  height: 90px;
+  margin-bottom: 30px;
+  padding: 0 10px;
+  border: 0;
+  outline: 0;
+  font-size: 1.5rem;
+  background-color: #f7f7f7;
+  transition: background-color 0.2s ease-in-out;
+}
+.entry__btn {
+  width: 80px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  outline: 0;
+  border: 0;
+  background-color: #f7f7f7;
+  user-select: none;
+  cursor: pointer;
+}
+.entry__btn:hover {
+  background-color: #003f33;
+  color: #f7f7f7;
+  transition: all 0.2s ease-out;
+}
+.entry__qrcode-btn {
+  border-radius: 5px 0 0 5px;
+}
+.entry__icon--qr-alert {
+  /* animation: ; */
+}
+.entry__copy-btn {
+  border-radius: 0 5px 5px 0;
+}
