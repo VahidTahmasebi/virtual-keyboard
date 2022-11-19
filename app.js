@@ -124,6 +124,10 @@ const Keyboard = {
 
           break;
       }
+      fragment.appendChild(keyElement);
+      if (insertLineBreak) {
+        fragment.appendChild(document.createElement("br"));
+      }
     });
   },
 
@@ -148,3 +152,6 @@ const Keyboard = {
   },
   //   _toggleCapsLock(){}
 };
+window.addEventListener("DOMContentLoaded", function () {
+  Keyboard.init();
+});
