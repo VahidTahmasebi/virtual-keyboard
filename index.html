@@ -11,11 +11,22 @@
   <body>
     <section class="entry">
       <div class="entry--row">
-        <button class="entry__btn entry__qrcode-icon"><i class="entry__btn--qr-alert material-icons material-icons-outlined">qr-code</i></button>
+        <button class="entry__btn entry__qrcode-btn"><i class="entry__btn--qr-alert material-icons material-icons-outlined">qr_code</i></button>
         <input type="text" class="entry__input-keys entry__input-keys--select" placeholder="your text ..." />
         <button class="entry__btn entry__copy-btn"><i class="entry__btn--change material-icons material-icons-outlined">content_copy</i></button>
       </div>
     </section>
+    <div class="modal-backdrop">
+      <div class="modal-backdrop__container">
+        <div class="modal-backdrop__header">
+          <button class="material-icons modal-backdrop__close-btn modal-backdrop--btn">close</button>
+        </div>
+        <img class="entry__qrscan-img" />
+        <div class="modal-backdrop__footer">
+          <button class="modal-backdrop__copy-btn modal-backdrop--btn">Save to Clipboard</button>
+        </div>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
