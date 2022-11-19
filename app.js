@@ -1,4 +1,10 @@
-const entryInput = document.querySelector(".entry__input-keys");
+const entryInput = document.querySelectorAll(".entry__input-keys");
+
+const entryCopyBtn = document.querySelector(".entry__copy-btn");
+const entryBtnChange = document.querySelector(".entry__Btn--change");
+const entryKeyBoardInputSelect = document.querySelector(".entry__input-keys--select");
+
+const entryQrcodeBtn = document.querySelector(".entry__qrcode-btn");
 
 const Keyboard = {
   elements: {
@@ -165,4 +171,23 @@ const Keyboard = {
 };
 window.addEventListener("DOMContentLoaded", function () {
   Keyboard.init();
+});
+
+entryCopyBtn.addEventListener("click", () => {
+  if (entryKeyBoardInputSelect.value) {
+    entryKeyBoardInputSelect.select();
+    navigator.clipboard.writeText(entryKeyBoardInputSelect.value);
+    entryBtnChange.textContent = "done";
+
+    setTimeout(() => {
+      entryBtnChange.textContent = "content_copy";
+    }, 700);
+  }
+});
+
+entryQrcodeBtn.addEventListener("click", () => {
+  if (!entryKeyBoardInputSelect.value) {
+    entryBtnQrAlert.textContent = "directions";
+    entryKeyBoardInputSelect.getElementsByClassName.background = "#e9e1e1f6";
+  }
 });
