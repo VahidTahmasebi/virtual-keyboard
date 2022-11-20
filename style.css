@@ -175,7 +175,7 @@ body {
   align-items: flex-end;
   padding: 2px;
 }
-.entry__qrcode-img {
+.entry__qrscan-img {
   flex-grow: 2;
   padding: 5px 0;
   user-select: none;
@@ -190,7 +190,7 @@ body {
 .modal-backdrop__copy-btn {
   padding: 9px;
 }
-.modal-backdrop__copy-btn {
+.modal-backdrop__copy-btn:active {
   opacity: 0.7;
 }
 
