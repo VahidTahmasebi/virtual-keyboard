@@ -5,6 +5,12 @@ const entryBtnChange = document.querySelector(".entry__Btn--change");
 const entryKeyBoardInputSelect = document.querySelector(".entry__input-keys--select");
 
 const entryQrcodeBtn = document.querySelector(".entry__qrcode-btn");
+const entryQrscanImg = document.querySelector(".entry__qrscan-img");
+const entryBtnQrAlert = document.querySelector(".entry__btn--qr-alert");
+
+const modalBackdrop = document.querySelector(".modal-backdrop");
+const modalBackdropCloseBtn = document.querySelector(".modal-backdrop__close-btn");
+const modalBackdropCopyBtn = document.querySelector(".modal-backdrop__copy-btn");
 
 const Keyboard = {
   elements: {
@@ -173,6 +179,7 @@ window.addEventListener("DOMContentLoaded", function () {
   Keyboard.init();
 });
 
+// copy input text
 entryCopyBtn.addEventListener("click", () => {
   if (entryKeyBoardInputSelect.value) {
     entryKeyBoardInputSelect.select();
@@ -185,9 +192,51 @@ entryCopyBtn.addEventListener("click", () => {
   }
 });
 
+// QR Code
 entryQrcodeBtn.addEventListener("click", () => {
   if (!entryKeyBoardInputSelect.value) {
     entryBtnQrAlert.textContent = "directions";
-    entryKeyBoardInputSelect.getElementsByClassName.background = "#e9e1e1f6";
+    entryKeyBoardInputSelect.style.background = "#e9e1e1f6";
   }
+  setTimeout(() => {
+    entryBtnQrAlert.textContent = "qr_code";
+    entryKeyBoardInputSelect.style.background = "#f7f7f7";
+  }, 1000);
+  if (entryKeyBoardInputSelect.value) {
+    modalBackdrop.style.display = "block";
+    let qrValue = entryKeyBoardInputSelect.value;
+
+    entryQrscanImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrValue}`;
+  }
+});
+
+// close modal with backdrop
+window.addEventListener("click", (e) => {
+  if (e.target == modalBackdrop) {
+    modalBackdrop.style.display = "none";
+  }
+});
+
+modalBackdropCloseBtn.addEventListener("click", () => {
+  modalBackdrop.style.display = "none";
+});
+
+// save in clipboard
+modalBackdropCopyBtn.addEventListener("click", () => {
+  async function copyPicture() {
+    try {
+      let qrValue = entryKeyBoardInputSelect.value;
+
+      const response = await fetch(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrValue}`);
+      const blob = await response.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          [blob.type]: blob,
+        }),
+      ]);
+    } catch (err) {
+      console.error(err.name, err.massage);
+    }
+  }
+  copyPicture();
 });
